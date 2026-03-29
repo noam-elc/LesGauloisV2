@@ -9,9 +9,8 @@ public class TestGaulois {
 	public static void main(String[] args) {
 		Gaulois asterix = new Gaulois("Astérix", 8);
 		Gaulois obelix = new Gaulois("Obélix", 16);
-		Romain minus = new Romain("minus", 6);
 		Druide panoramix = new Druide("Panoramix", 2);
-		Romain brutus = new Romain("Brutus", 6);
+		Romain brutus = new Romain("Brutus", 14);
 		
 		
 		panoramix.fabriquerPotion(4, 3);
