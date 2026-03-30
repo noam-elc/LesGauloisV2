@@ -7,6 +7,7 @@ public class Romain {
 	public Romain(String nom, int force) {
 		this.nom = nom;
 		this.force = force;
+		assert isInvariantVerified() : "La force du Romain doit être positive";
 	}
 
 	public String getNom() {
@@ -15,7 +16,6 @@ public class Romain {
 
 	public void parler(String texte) {
 		System.out.println(prendreParole() + "\"" + texte + "\"");
-
 	}
 
 	private String prendreParole() {
@@ -23,11 +23,21 @@ public class Romain {
 	}
 	
 	public void recevoirCoup(int forceCoup) {
-        force = force - forceCoup;
+		assert forceCoup>0 : "Pré-Condition";
+        force -= forceCoup;
         if (force > 0) {
-            System.out.println("Le Romain " + nom + " : \"Aïe\"");
+            parler("Aïe");
         } else {
-            System.out.println("Le Romain " + nom + " : \"J'abandonne\"");
+        	parler("J'abandonne !");
         }
+        assert isInvariantVerified() : "La force du Romain doit être positive";
     }
+	
+	private boolean isInvariantVerified() {
+		return (force >= 0);
+	}
+	
+	public static void main(String[] args) {
+		Romain minus = new Romain("Minus", 6);
+	}
 }
